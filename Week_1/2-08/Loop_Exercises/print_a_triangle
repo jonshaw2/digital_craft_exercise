@@ -1,0 +1,11 @@
+height = raw_input("Height? ")
+
+width = 1+(height-1)*2
+start_position = ((width-1)/2)+1
+x = start_position
+y = start_position + 1
+
+for i in range(width)
+  a=""
+  for j in range(width)
+    for k in range(x,y)
