@@ -6,6 +6,21 @@ for i in range(len(word)):
 
 guessed = 7
 
+def draw_man():
+    print "    /------------        "
+    print "    |           |        "
+    print "    |          ( )       "
+    print "    |         \ | /      "
+    print "    |          \|/       "
+    print "    |           |        "
+    print "    |          / \       "
+    print "    |         /   \      "
+    print "   ___                   "
+
+    return;
+
+
+
 while display_word != word:
     print "\n\n\n\n\n\n\n"
     display_word = ""
@@ -24,14 +39,4 @@ while display_word != word:
 
     guessed -=1
 
-
-
-#    /------------
-#    |           |
-#    |          ( )
-#    |         \ | /
-#    |          \|/
-#    |           |
-#    |          / \
-#    |         /   \
-#   ___
+    draw_man();
