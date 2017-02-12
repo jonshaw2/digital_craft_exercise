@@ -1,12 +1,16 @@
 
-word = "aeiou"
+word = "Hello There"
+word = word.lower()
 word_cell = []
 display_word = ""
 guessed_word = [" "]
-
+guessed_a_word = False
 
 for i in range(len(word)):
-    word_cell.append("-")
+    if word[i] == " ":
+        word_cell.append(" ")
+    else:
+        word_cell.append("-")
     display_word = display_word + word_cell[i]
 guessed = 7
 
@@ -38,7 +42,7 @@ def draw_man():
 #    print "    |         /   \      "
 #    print "   ___                   "
 
-    print guessed
+    print "\n"*15
     if guessed == 6:
         the_man[1][16]="|"
     if guessed == 5:
@@ -94,7 +98,7 @@ while display_word != word:
 
     print display_word
 
-    print "\n\n"
+    print "\n"
     print "you have %d guesses left" %guessed
     print "\nGuessed Words:"
     print guessed_word
@@ -104,7 +108,8 @@ while display_word != word:
     while out == False:
         check_again = False
 
-        guess_word = raw_input("\n\nGuess the word!: ")
+        guess_word = raw_input("\nGuess the word!: ")
+        guess_word = guess_word.lower()
         if (len(guess_word) != 1):
             print("Please input valid word")
 
@@ -124,13 +129,19 @@ while display_word != word:
     for i in range(len(word)):
         if guess_word == word[i]:
             word_cell[i] = word[i]
-            guessed += 1
+            guessed_a_word = True
 
-    guessed -=1
+    if guessed_a_word == True:
+        guessed_a_word = False
+    else:
+        guessed -=1
 
     print build_display_word()
 
 if guessed >0:
+    print "Yes! The Word Is: "+ display_word
     print "Victory!"
 else:
+    print "You Achieved: "+ display_word
+    print "The Word Is:  "+ word
     print "You Lose!"
