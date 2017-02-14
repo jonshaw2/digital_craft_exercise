@@ -1,0 +1,2 @@
+file_name = raw_input("What is file name?: ")
+file = open(file_name,'r')
