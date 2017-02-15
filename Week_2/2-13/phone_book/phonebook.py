@@ -4,7 +4,10 @@ phonebook = {}
 
 def look_up_entry():
     name = raw_input("Name: ")
-    print "Found entry for " + name+":\n"+"Phone Number: "+ phonebook[name]["Phone"]+"\n"+"Email: "+ phonebook[name]["Email"] +"\n"+"Website: "+phonebook[name]["Website"]+"\n"
+    if name not in phonebook:
+        print "name not in phonebook"
+    else:
+        print "Found entry for " + name+":\n"+"Phone Number: "+ phonebook[name]["Phone"]+"\n"+"Email: "+ phonebook[name]["Email"] +"\n"+"Website: "+phonebook[name]["Website"]+"\n"
 def set_an_entry():
     name = raw_input("Name: ")
     phonenumber = raw_input("Phone Number: ")
@@ -14,8 +17,11 @@ def set_an_entry():
     phonebook[name] = {"Phone":phonenumber, "Email":email, "Website":website}
 def delete_an_entry():
     name = raw_input("Name: ")
-    print ("Deleted entry for " + name)
-    del phonebook[name]
+    if name not in phonebook:
+        print "name not in phonebook"
+    else:
+        print ("Deleted entry for " + name)
+        del phonebook[name]
 
 def list_all_entries():
     for entry in phonebook:
