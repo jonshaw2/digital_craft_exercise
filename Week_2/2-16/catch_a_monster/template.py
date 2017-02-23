@@ -204,7 +204,7 @@ def main():
         hero.render(screen)
         # Game display
 
-        pygame.display.update()
+
         if check_collision(hero,goblin):
             pass
         if check_collision(hero,monster):

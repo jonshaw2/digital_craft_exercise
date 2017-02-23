@@ -1,0 +1,34 @@
+body{
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: blue;
+}
+
+.box {
+
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: white;
+  padding: 1px;
+  border: 1px solid black;
+  border-color: lightgray lightgray gray lightgray;
+  height : 40px;
+  width : 700px;
+  overflow: hidden
+}
+
+.test {
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: lightgray;
+  padding: 1px;
+}
