@@ -1,0 +1,12 @@
+fibonacci = [1,2]
+num_add = 3
+limit = 4000000
+fib_x=0
+fib_y=1
+
+while num_add <= 4000000:
+  num_add = fibonacci[fib_x]+fibonacci[fib_y]
+  if num_add < limit:
+    fibonacci.append(num_add)
+    fib_x + 1
+    fib_y + 1

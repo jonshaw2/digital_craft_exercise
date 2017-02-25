@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSS-Tricks</title>
+    <style>
+    .cf:before,
+    .cf:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+
+    .cf:after {
+        clear: both;
+    }
+
+    body {
+      font-family: "Lucida Sans Unicode", Tahoma, Sans-Serif;
+      margin: 0;
+    }
+    h1 {
+      font-family: Impact;
+    }
+    * {
+      box-sizing: border-box;
+    }
+
+    .nav {
+      padding: 14px 20px;
+    }
+
+    .search-field {
+      float: left;
+      font-size: 1.8em;
+      width: 5em;
+      margin-right: 20px;
+    }
+
+    .mag-glass {
+      float: left;
+      height: 39px;
+      border-top: 5px solid black;
+      border-left: 10px solid black;
+      border-bottom: 5px solid black;
+      border-right: 10px solid black;
+    }
+
+    .right-nav {
+      float: right;
+    }
+
+    .content {
+      float: left;
+      border: 20px solid #444443;
+      width: 70%;
+      padding: 34px;
+    }
+
+    .sidebar {
+      float: left;
+      width: 30%;
+      padding: 15px;
+      background-color: #EEEEED;
+    }
+
+    .sidebar img {
+      width: 100%;
+    }
+
+    .link-symbol {
+      float: right;
+      height: 52px;
+    }
+
+    .wufoo-form {
+      margin-top: 20px;
+      text-align: center;
+      padding: 20px;
+      background-color: white;
+    }
+
+    .wufoo-form input {
+      width: 100%;
+      font-size: 1em;
+    }
+
+    .author-line {
+      background: #ccc;
+      padding: 5px 10px;
+      color: white;
+      padding-left: 34px;
+      margin-left: -34px;
+      margin-right: -34px;
+      text-transform: uppercase;
+    }
+
+    .blue {
+      color: #2AA5F6;
+    }
+
+    .brown-border-parent {
+      position: relative;
+    }
+
+    .brown-border {
+      position: absolute;
+      background-color: orange;
+      height: 5px;
+      width: 100%;
+      opacity: 0.5;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="nav cf">
+      <img src="assets/hamburger.png" alt="Menu" width="50">
+      <img src="assets/logo.png" alt="CSS-Tricks" height="38">
+      <div class="right-nav">
+        <input class="search-field" type="text" name="query">
+        <img class="mag-glass" src="assets/search.png" alt="Search">
+      </div>
+    </div>
+    <div class="brown-border-parent">
+      <div class="brown-border"></div>
+    </div>
+    <div class="content">
+      <h1>
+        <img class="link-symbol" src="assets/link.png" alt="Link">
+        Do responsive sites have to be so tall on mobile?</h1>
+
+      <div class="author-line">
+        <span class="blue">#</span> February 23, 2017 by <span class="blue">Chris Coyier</span>
+      </div>
+
+      <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+
+      <h2>Header Level 2</h2>
+
+      <ol>
+         <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+         <li>Aliquam tincidunt mauris eu risus.</li>
+      </ol>
+
+      <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+
+      <h3>Header Level 3</h3>
+
+      <ul>
+         <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+         <li>Aliquam tincidunt mauris eu risus.</li>
+      </ul>
+
+      <pre><code>
+      #header h1 a {
+        display: block;
+        width: 300px;
+        height: 80px;
+      }
+      </code></pre>
+    </div>
+    <div class="sidebar">
+      <img src="assets/get-hired.png" alt="Get Hired">
+      <form class="wufoo-form">
+        <img src="assets/wufoo.png" alt="Wufoo">
+        <span>Build custom forms easily.</span>
+        <input type="text" placeholder="Let's get started!"><br>
+        <button>Sign Up Now!</button>
+      </form>
+    </div>
+  </body>
+</html>
