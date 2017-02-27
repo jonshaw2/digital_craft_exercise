@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style>
+
+    *{
+      text-align: center;
+    }
+    #first_row {
+      text-align:center;
+      padding: 50px 0;
+
+      background-color: blue;
+      color: red;
+    }
+    .container-fluid{
+      background-color: red;
+      color: white;
+    }
+
+    .nav{
+      color: white;
+    }
+    .top_content{
+      text-align: center;
+      color: #2762A9;
+      padding: 50px;
+      font-size: 40px;
+    }
+    .top_bot_content{
+      text-align: center;
+      color: #2762A9;
+      font-size: 26px;
+      font-family: Comic-sans;
+    }
+    .second-row {
+      text-align: center;
+    }
+
+    .listpref {
+      text-align: left;
+      padding-left: 35%;
+    }
+
+    .navbar-default .navbar-nav>li>a{
+      color: white;
+    }
+
+    li {
+      list-style-type: none;
+
+    }
+
+    .pair {
+      background-color: #008B89;
+    }
+    .third-row-text {
+      font-weight: bolder;
+      color: white;
+      font-size: 30px;
+    }
+    .third-row-text-bot {
+      padding-top: 400px;
+      color: yellow;
+      font-size: 25px;
+    }
+    .fourth-row-text{
+      font-weight: bolder;
+
+      font-size: 25px;
+    }
+    .fourth-row-text-bot{
+
+    }
+    .red-row {
+      background-color: red;
+      padding: 45px
+    }
+    .floatme {
+      float: right;
+      text-align: left;
+      color: white;
+    }
+    }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapsable-menu" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" style="color: white; padding-left: 150px; font-size: 25px;" href="#">mozilla</a>
+            </div>
+            <div class="collapse navbar-collapse" id="collapsable-menu">
+                <!-- a left nav bar -->
+                <ul class="nav navbar-nav">
+                    <!-- <li><a href="#">mozilla</a></li> -->
+
+                </ul>
+                <!-- a right nav bar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Participate</a></li>
+                    <li><a href="#">Firefox</a></li>
+                    <li><a href="#">Donate</a></li>
+                    <li><a href="#">Download Firefox</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div style="background-image: url(image-assets/background1.png); background-repeat: no-repeat; background-size: cover; height: 400px;" class="row">
+      <div class="col-xs-12"></div>
+        <div class="top_content">
+          INTERNET FOR PEOPLE,<br>NOT PROFIT.
+        </div>
+
+        <div class="top_bot_content">
+          INTERNET FOR PEOPLE,<br>NOT PROFIT.
+        </div>
+
+    </div>
+
+    <div class="row second-row pair">
+      <div class="col-md-6" style="border: 1px solid red; background-color: white">
+        <img src="image-assets/m-logo.png" alt="">
+        <br>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class="listpref">
+          <ul>
+            <li style="background-image: url(image-assets/encryption.png); background-repeat: no-repeat; background-size: 20px; padding: 5px 5px 5px 25px;text-align: left;"><a> Stand Up For Encryption</a></li>
+            <li style="background-image: url(image-assets/teach_the_web.png); background-repeat: no-repeat; background-size: 20px; padding: 5px 5px 5px 25px;text-align: left;"><a> Teach The Web</a></li>
+            <li style="background-image: url(image-assets/toolkit.png); background-repeat: no-repeat; background-size: 20px; padding: 5px 5px 5px 25px;text-align: left;"><a> Try the Lean Data Toolkit</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6 pair" style="background-color: #008B89; padding: 20px">
+      <img src="image-assets/vr-high-res.png" width="15%" alt="">
+      <br>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <div class="listpref">
+        <ul>
+          <li style="background-image: url(image-assets/gaming.png); background-repeat: no-repeat; background-size: 20px; padding: 5px 5px 5px 25px; text-align: left;"><a> Stand Up For Encryption</a></li>
+          <li style="background-image: url(image-assets/vr.png); background-repeat: no-repeat; background-size: 20px; padding: 5px 5px 5px 25px; text-align: left;"><a> Teach The Web</a></li>
+          <li style="background-image: url(image-assets/servo.png); background-repeat: no-repeat; background-size: 20px; padding: 5px 5px 5px 25px; text-align: left;"><a> Try the Lean Data Toolkit</a></li>
+          <li style="background-image: url(image-assets/rust.png); background-repeat: no-repeat; background-size: 20px; padding: 5px 5px 5px 25px;text-align: left"><a> Try the Lean Data Toolkit</a></li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12" style="background-image: url(image-assets/background2.png); background-size: cover; background-repeat: no-repeat">
+      <img src="image-assets/firefox-logo-high-res.png" alt="" style="padding: 40px 40px 20px 40px;"><br>
+      <div class = "third-row-text">Browse freely.</div>
+      <div class = "third-row-text-bot">Discover unlimited potential, endless possibility and a wide open Web.<br> <br> Get Firefox today</div>
+
+
+      </div>
+
+    </div>
+
+    <!-- <div class="row" style="background-color: white;">
+      <div class="col-md-4" style="padding: 20px 0 0 20%;"><img src="image-assets/add-ons.png" alt="">
+        <br>
+      <div class="fourth-row-text">Add-ons</div>      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</div>
+      <div class="col-md-4" style="padding: 33px 0 0 30px"><img src="image-assets/careers.png" alt="">
+        <br>
+        <div class="fourth-row-text">Careers</div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</div>
+      <div class="col-md-4" style="padding: 33px 20% 0 20px;"><img src="image-assets/help.png" alt="">
+        <br>
+      <div class="fourth-row-text">  Need help?</div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</div>
+    </div> -->
+
+
+    <div class="row" style="background-color: white;">
+      <div class="col-md-12">
+        <div class="row" style="width: 75%; margin: auto; padding: 20px 0 20px 0">
+      <div class="col-md-4" ><img src="image-assets/add-ons.png" alt="">
+        <br>
+      <div class="fourth-row-text">Add-ons</div>      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</div>
+      <div class="col-md-4" ><img src="image-assets/careers.png" alt="">
+        <br>
+        <div class="fourth-row-text">Careers</div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</div>
+      <div class="col-md-4" ><img src="image-assets/help.png" alt="">
+        <br>
+      <div class="fourth-row-text">  Need help?</div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row red-row">
+      <div class="col-md-6">
+        <div class="floatme">
+          Love the Web?<br>
+          Get the Mozilla<br>newsletter and help us<br>keep it open and free.
+        </div>
+        <img class="floatme" src="image-assets/newsletter.png" width="20%" style="padding-right: 15px" alt="">
+
+      </div>
+      <div class="col-md-6">
+        <input style="float: left; width: 30%" type="YOUR NAME HERE" name="" value="">
+        <button style="clear: left; float: left; width: 30%; margin-top: 10px; background-color: red; color: white" type="button" name="button">SIGN UP</button>
+        <div style="clear: left; float: left; color: white; font-size: 2px;">tiny tiny tiny tiny</div>
+      </div>
+    </div>
+
+    <div class="row" style="background-color: #666666;">
+      <div class="col-md-12" style="margin: auto;">
+        <div class="row" style="width:80%; margin: auto; background-color: #666666">
+      <div class="col-md-1 col-sm-offset-2"><img src="image-assets/mozilla-logo-footer.png" alt="" width= "125px"></div>
+      <div class="col-md-1 col-sm-offset-3">test other small text you cannot read</div>
+      <div class="col-md-1 col-sm-offset-3" style="padding-bottom: 20px;">test more small text you cannot read <input type="" name="" value=""></div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
