@@ -14,8 +14,12 @@ var people = [
   'Jason',
   'Che',
   'Ben'
+  
 ];
 
+function short_name_sort(a, b){
+  return a.length-b.length;
+}
 
-people = people.sort();
+people = people.sort(short_name_sort);
 console.log(people);

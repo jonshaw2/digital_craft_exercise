@@ -13,9 +13,8 @@ var people = [
   'Keyur',
   'Jason',
   'Che',
-  'Ben'
+  'Ben',
 ];
-
 
 people = people.sort();
 console.log(people);
