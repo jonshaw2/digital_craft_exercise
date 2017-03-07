@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Todo List Exercise</title>
+    <script src="jquery.js"></script>
+    <script>
+    /*
+    Make a Todo List
+
+    0. Make it so that after entering the task description, in the text field and clicking the "Add Task" button, a new task appears inside the element with the id todo-list.
+    1. the ability to remove tasks (add an x button)
+    2. the ability to check off tasks - strikes them out wo removing (add a checkbox)
+    3. the ability to edit an existing task
+
+    */
+    $(document).ready(function() {
+      $('#add-button').click(function() {
+        var textValue = $('#description').val();
+        $('#todo-list').append(
+          '<li>' + '<input class="check_box" type="checkbox" value="yes">' +textValue +" "+
+            '<button class="remove">remove</button>' + '<button class="edit_button">Edit</button>' +
+          '</li>'
+        );
+        $('#description').val('');
+      });
+
+      function removeItem() {
+        var button = $(this);
+        var li = button.parent();
+        li.remove();
+      };
+
+      $('#todo-list').on('click','.edit_button',function(){
+        var textValue = $('#description').val();
+        $(this).parent().html('<li>' + '<input class="check_box" type="checkbox" value="yes">' +textValue +" "+
+          '<button class="remove">remove</button>' + '<button class="edit_button">Edit</button>' +
+        '</li>');
+
+      });
+
+      $('#todo-list').on('click','.check_box',function(){
+        if ($(this).is(':checked')) {
+          $(this).parent().css("text-decoration","line-through");
+        };
+        if ($(this).is(':not(:checked)')) {
+          $(this).parent().css("text-decoration","none");
+        };
+          // $('.'+id + "+span").(li).html('hello'));
+
+      });
+
+      $('#todo-list').on('click','.remove', removeItem);
+    });
+
+    </script>
+    <style>
+    #wrapper {
+      max-width: 480px;
+      margin: auto;
+    }
+
+    #description, #search, #todo-list {
+      font-size: 1.5em;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <input id="description" type="text" name="description">
+      <button id="add-button">Add Task</button>
+      <ul id="todo-list">
+        <li><input class="check_box" type="checkbox" value="yes">Feed the cat <button class="remove">remove</button><button class="edit_button">Edit</button></li>
+      </ul>
+    </div>
+  </body>
+</html>
