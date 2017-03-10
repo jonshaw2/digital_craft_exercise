@@ -33,9 +33,8 @@
 
       $('#todo-list').on('click','.edit_button',function(){
         var textValue = $('#description').val();
-        $(this).parent().html('<li>' + '<input class="check_box" type="checkbox" value="yes">' +textValue +" "+
-          '<button class="remove">remove</button>' + '<button class="edit_button">Edit</button>' +
-        '</li>');
+        $(this).parent().html('<input class="check_box" type="checkbox" value="yes">' +textValue +" "+
+          '<button class="remove">remove</button>' + '<button class="edit_button">Edit</button>');
 
       });
 
