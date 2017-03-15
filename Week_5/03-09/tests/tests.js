@@ -49,4 +49,20 @@ describe('Card', function () {
     expect(card.getImageUrl()).toEqual('images/jack_of_hearts.png');
   });
 
+  it('Card in hand returns total value of points in hand', function (){
+    var myHand = new Hand();
+    myHand.addCard(new Card(5, 'diamonds'));
+    myHand.addCard(new Card(13, 'spades'));
+    expect(myHand.getPoints()).toEqual(15);
+  });
+
+  it('returns totaly number of cards left in hand', function(){
+    var myDeck = new Deck();
+    myDeck.draw();
+    myDeck.draw();
+    myDeck.shuffle();
+    expect(myDeck.numCardsLeft()).toEqual(50);
+  });
+
+
 });
