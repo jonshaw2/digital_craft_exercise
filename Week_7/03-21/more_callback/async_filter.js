@@ -1,10 +1,4 @@
-var async = require('async');
-var fs = require('fs');
-var dir2read = 'images/';
-var clog = console.log;
-var gm = require('gm');
-var request = require('request');
-
+var async - require('async');
 var filenames = [
   '1.txt',
   '2.txt',
@@ -17,26 +11,19 @@ var filenames = [
   '9.txt',
   '10.txt'
 ];
-
-
-
-
-fs.readdir(dir2read, function(err, flist){
-   if (err) {
-      clog('Error reading directory ' + dir2read);
-      clog(err);
-      return;
-   }
-   var files = flist;
-
-   async.each(files,traverseArray,function(err){
-     console.log(err);
-   });
-});
-
-function traverseArray(file){
-  downloadAndCreateThumbnail(dir2read+file, file, file, function(err){
-    console.log(err);
-
+function doWeWant(filename, callback) {
+  fs.access(filename, 'r', function(err){
+    callback(null, !err);
   });
 }
+
+async.filter(filenames, doWeWant, function(err, validFiles){
+  if (err){
+    console.log(err.message);
+    return;
+  }
+  else{
+  console.log(validFiles);
+  }
+
+});
