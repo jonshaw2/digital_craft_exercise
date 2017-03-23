@@ -1,4 +1,4 @@
-var async - require('async');
+var async = require('async');
 var filenames = [
   '1.txt',
   '2.txt',
