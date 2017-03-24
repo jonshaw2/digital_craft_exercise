@@ -11,7 +11,11 @@ var urls = [
 ];
 
 
+var links = urls.map(function(requested){
+  return request.get(requested);
+});
 
+console.log(links);
 
 Promise.all(urls.map(function(requested){
   return request.get(requested);
