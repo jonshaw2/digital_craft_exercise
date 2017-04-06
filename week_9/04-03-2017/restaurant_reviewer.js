@@ -6,6 +6,7 @@ require('any-promise/register/bluebird');
 
 const bodyParser = require('body-parser');
 const express = require('express');
+const session = require('express-session');
 const app = express();
 
 const connect_vars = require('./config.js');
@@ -16,9 +17,54 @@ const db = pgp({
   password: connect_vars.password
 });
 
+
+
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
+
+app.use(session({
+  secret: 'test',
+  cookie:{
+    maxAge: 6000000000
+  }
+}));
+
+app.use(function(request, response, next) {
+  response.locals.session = request.session;
+  next();
+});
+
+app.get('/login', function(request, response){
+  response.render('login.hbs');
+});
+
+app.post('/submit_login', function(request, response, next){
+  var username = request.body.username;
+  var password = request.body.password;
+  db.one("select reviewer.password from reviewer where reviewer.id = $1", request.body.username)
+    .then(function(check_password){
+      console.log(check_password);
+      if (check_password.password === password){
+        request.session.loggedInUser = username;
+
+        response.redirect('/');
+      }else{
+        response.redirect('/login');
+      }
+
+    })
+    .catch(next);
+});
+
+app.use(function authentication(request, response, next){
+  if (request.session.loggedInUser){
+    next();
+  }else{
+  response.send('you must login! <a href="/login">Login</a>');
+  }
+});
+
 
 app.get('/',function (req, response){
   response.render('index.hbs',{
@@ -75,7 +121,7 @@ app.post('/submit_review/:id', function(req, response, next){
     let restaurant_stars = req.body.review_stars;
     let restaurant_review = req.body.review_review;
     let restaurant_id = req.params.id;
-    db.none(`insert into review values (default, NULL,${restaurant_stars},'${restaurant_title}','${restaurant_review}',${restaurant_id})`)
+    db.none(`insert into review values (default, '${req.session.loggedInUser}',${restaurant_stars},'${restaurant_title}','${restaurant_review}',${restaurant_id})`)
       .then(function(){
         response.redirect(`/restaurant/${restaurant_id}`);
       })
