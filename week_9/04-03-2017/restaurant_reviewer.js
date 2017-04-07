@@ -3,7 +3,7 @@ const pgp = require('pg-promise')({
   promiseLib: Promise
 });
 require('any-promise/register/bluebird');
-
+const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const express = require('express');
 const session = require('express-session');
@@ -17,12 +17,9 @@ const db = pgp({
   password: connect_vars.password
 });
 
-
-
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
-
 app.use(session({
   secret: 'test',
   cookie:{
@@ -44,17 +41,46 @@ app.post('/submit_login', function(request, response, next){
   var password = request.body.password;
   db.one("select reviewer.password from reviewer where reviewer.id = $1", request.body.username)
     .then(function(check_password){
-      console.log(check_password);
-      if (check_password.password === password){
-        request.session.loggedInUser = username;
+      bcrypt.compare(password, check_password.password)
+        .then(function(matched){
+          request.session.loggedInUser = username;
+          response.redirect('/');
+        })
+        .catch(function(err){
+            response.redirect('/login');
+        });
 
-        response.redirect('/');
-      }else{
-        response.redirect('/login');
-      }
+    });
+});
+
+app.get('/create_account', function(request, response){
+  response.render('create_account.hbs');
+});
+
+app.post('/submit_create_account', function(request, response){
+  var username = request.body.username;
+  var password = request.body.password;
+  bcrypt.hash(password, 10)
+    .then(function(Password){
+      console.log('inside password');
+      console.log(Password);
+      return Password;
+    })
+    .then(function(tempPassword){
+      var name = request.body.name;
+      var email = request.body.email;
+      db.none("insert into reviewer values ($1, $2, $3, null, $4)", [username, name, email, tempPassword])
+        .then(function(){
+          response.redirect('/login');
+        })
+        .catch(function(){
+          response.redirect('/create_account');
+        });
 
     })
-    .catch(next);
+    .catch(function(err){
+      console.log(err.message);
+    });
 });
 
 app.use(function authentication(request, response, next){
@@ -86,6 +112,11 @@ app.get('/submit', function(req, response, next) {
         });
       })
       .catch(next);
+});
+app.get('/logout', function(req, response, next){
+  req.session.loggedInUser = false;
+  console.log('in log out');
+  response.redirect('/');
 });
 
 app.get('/restaurant/:id', function(req,response, next){

@@ -28,14 +28,19 @@
     .username{
       text-align: right;
     }
-
+    .logout{
+      text-align: right;
+    }
     #search{
       width: 30%;
     }
     </style>
   </head>
   <body>
+    {{#if session.loggedInUser}}
     <div class='username'>Username: {{session.loggedInUser}}</div>
+    <div class='logout'><a href="/logout">Logout</a></div>
+    {{/if}}
     {{{body}}}
   </body>
 </html>
