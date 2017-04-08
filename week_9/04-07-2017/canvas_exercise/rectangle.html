@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>rectangle</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+
+    <script>
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+      ctx.fillStyle = 'blue';
+      ctx.fillRect(100,100,200,200);
+      ctx.fillStyle= 'red';
+      ctx.fillRect(300,100,50,200);
+      ctx.fillStyle= 'yellow';
+      ctx.fillRect(120, 120, 160, 160);
+
+      ctx.beginPath();
+      ctx.fillStyle='red';
+      ctx.ellipse(500,300, 100, 100,0,0,Math.PI*2);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.fillStyle='white';
+      ctx.ellipse(500, 300, 80, 80, 0, 0, Math.PI*2);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.fillStyle='red';
+      ctx.ellipse(500, 300, 60, 60, 0, 0, Math.PI*2);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.fillStyle='white';
+      ctx.ellipse(500, 300, 40, 40, 0, 0, Math.PI*2);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.fillStyle='red';
+      ctx.ellipse(500, 300, 20, 20, 0, 0, Math.PI*2);
+      ctx.closePath();
+      ctx.fill();
+    </script>
+
+  </body>
+</html>

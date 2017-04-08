@@ -9,7 +9,7 @@ io.on('connection', function(socket){
   socket.on('join', function(screenName){
     console.log(screenName);
     socket.screenName = screenName;
-  io.emit('chat message', socket.screenName + ' has connected');
+    io.emit('chat message', socket.screenName + ' has connected');
   });
 });
 
