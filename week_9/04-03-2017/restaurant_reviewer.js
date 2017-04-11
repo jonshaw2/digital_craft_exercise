@@ -98,16 +98,19 @@ app.get('/',function (req, response){
   });
 });
 
-app.get('/submit', function(req, response, next) {
-  // console.log(req.query);
+app.get('/search', function(req, response, next) {
+  console.log(req.query);
   // response.send(req.query);
-    var rest_name = req.query.restaurant_search;
+    var rest_name = req.query.searchTerm;
 
+    console.log(rest_name);
+    console.log('in search');
     // db.any(`select * from restaurant where restaurant.name ilike '%${rest_name}%' `)
     db.any("select * from restaurant where restaurant.name ilike $1","%"+rest_name+"%")
       .then(function(search_results){
-        console.log(search_results);
         response.render('search_results.hbs',{
+          layout: false,
+
           search_results: search_results
         });
       })

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script src="/jquery.js"></script>
     <style>
     .body{
 
@@ -35,6 +36,9 @@
       width: 30%;
     }
     </style>
+
+
+
   </head>
   <body>
     {{#if session.loggedInUser}}
@@ -44,3 +48,25 @@
     {{{body}}}
   </body>
 </html>
+
+<script>
+$('#search-form').submit(function(event) {
+  event.preventDefault();
+
+  let test = $('#search-form input').val();
+  $.get('/search?searchTerm=' + test)
+    .then(function(resultsHTML) {
+      $('#search-results').html(resultsHTML);
+    });
+});
+</script>
+
+<script>
+$('#search-form input').keyup(function(event){
+  let searchTerm = $('#search-form input').val();
+  $.get('/search?searchTerm=' + searchTerm)
+    .then(function(resultsHTML){
+      $('#search-results').html(resultsHTML);
+    });
+});
+</script>
