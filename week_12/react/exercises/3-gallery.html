@@ -1,0 +1,122 @@
+<!--
+Make this gallery application work. The previous and next buttons should cycle through the 6 photos in the gallery.
+
+## Step 2
+
+After making the previous and next buttons work, also list all the images in the gallery as thumbnails (just use height/height to make them smaller), and make them clickable so that when clicked, the clicked photo becomes the main photo.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Babel Quickstart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+
+    <style>
+    button img{
+      width: 50px;
+      height: 50px;
+    }
+    </style>
+
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel" data-presets="react">
+    const images = [
+      'images/comfy.jpg',
+      'images/farted.jpg',
+      'images/hate.jpg',
+      'images/lolcat_airplane.jpg',
+      'images/mocked.jpg',
+      'images/monorail.jpg',
+    ];
+
+    class Gallery extends React.Component {
+      constructor(){
+        super();
+        this.state = {
+          imagePosition : 1
+        };
+      }
+      previousImage(){
+        this.setState({
+          imagePosition : this.state.imagePosition - 1
+        });
+        if (this.state.imagePosition === 0){
+          this.setState({
+            imagePosition: 5
+          });
+        }
+        console.log(this.state.imagePosition);
+      }
+
+      nextImage(){
+        this.setState({
+          imagePosition : this.state.imagePosition + 1
+        });
+        if (this.state.imagePosition === 5){
+          this.setState({
+            imagePosition: 0
+          });
+        }
+        console.log(this.state.imagePosition);
+      }
+
+      changeImage(ind){
+        this.setState({
+          imagePosition : ind
+        });
+      }
+      render() {
+        let currentImage = this.props.images[this.state.imagePosition];
+        return (
+          <div>
+            <button onClick={()=> this.previousImage()}>
+              Previous
+            </button>
+            <button onClick={()=> this.nextImage()}>
+              Next
+            </button>
+            <br/>
+
+            <img src={currentImage}/>
+
+            <br/>
+            <button onClick={()=> this.changeImage(0)}>
+              <img src={this.props.images[0]}/>
+            </button>
+
+            <button onClick={()=> this.changeImage(1)}>
+              <img src={this.props.images[1]}/>
+            </button>
+
+            <button onClick={()=> this.changeImage(2)}>
+              <img src={this.props.images[2]}/>
+            </button>
+
+            <button onClick={()=> this.changeImage(3)}>
+              <img src={this.props.images[3]}/>
+            </button>
+
+            <button onClick={()=> this.changeImage(4)}>
+              <img src={this.props.images[4]}/>
+            </button>
+
+
+
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <Gallery images={images}/>,
+      document.getElementById('root')
+    );
+
+    </script>
+  </body>
+</html>
