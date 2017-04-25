@@ -85,25 +85,29 @@ After making the previous and next buttons work, also list all the images in the
             <img src={currentImage}/>
 
             <br/>
-            <button onClick={()=> this.changeImage(0)}>
-              <img src={this.props.images[0]}/>
-            </button>
+            // <button onClick={()=> this.changeImage(0)}>
+            //   <img src={this.props.images[0]}/>
+            // </button>
+            //
+            // <button onClick={()=> this.changeImage(1)}>
+            //   <img src={this.props.images[1]}/>
+            // </button>
+            //
+            // <button onClick={()=> this.changeImage(2)}>
+            //   <img src={this.props.images[2]}/>
+            // </button>
+            //
+            // <button onClick={()=> this.changeImage(3)}>
+            //   <img src={this.props.images[3]}/>
+            // </button>
+            //
+            // <button onClick={()=> this.changeImage(4)}>
+            //   <img src={this.props.images[4]}/>
+            // </button>
 
-            <button onClick={()=> this.changeImage(1)}>
-              <img src={this.props.images[1]}/>
-            </button>
-
-            <button onClick={()=> this.changeImage(2)}>
-              <img src={this.props.images[2]}/>
-            </button>
-
-            <button onClick={()=> this.changeImage(3)}>
-              <img src={this.props.images[3]}/>
-            </button>
-
-            <button onClick={()=> this.changeImage(4)}>
-              <img src={this.props.images[4]}/>
-            </button>
+            {images.map((image, index) =>
+              <img onClick={() => this.changeImage(index)} src={image} height="68" />
+            )}
 
 
 
