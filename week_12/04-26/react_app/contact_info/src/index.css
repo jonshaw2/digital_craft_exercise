@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+form {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.contactInfo {
+    text-align: center;
+}
+
+button.deleteButton {
+  position: absolute;
+  text-align: right;
+  font-size: 15px;
+}
