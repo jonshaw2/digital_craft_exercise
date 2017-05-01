@@ -9,9 +9,9 @@ class ContactForm extends React.Component{
       name: '',
       phone: '',
       email: '',
-      type: '',
+      type: 'Family',
 
-      nameArray: ['jon','bob'],
+      nameArray: ['joe','bob'],
       phoneArray: ['123-456-7890','234-567-8901'],
       emailArray: ['a@test.com','b@test.com'],
       typeArray: ['Family','Friend']
@@ -68,7 +68,7 @@ class ContactForm extends React.Component{
 
   render(){
 
-    var name = this.state.nameArray;
+    let name = this.state.nameArray;
     let phone = this.state.phoneArray;
     let email = this.state.emailArray;
     let type = this.state.typeArray;
