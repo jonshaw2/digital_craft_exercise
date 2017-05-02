@@ -3,7 +3,9 @@
 // Generate a random number and then dispatch it as
 // an action.
 function reducer(state, action) {
-
+  let flipResult = (Math.random());
+  console.log(flipResult);
+  return flipResult;
 }
 
 export default reducer;

@@ -6,12 +6,20 @@ import reducer from './Counter.reducer';
 let store = Redux.createStore(reducer);
 
 class Counter extends React.Component {
+  toggle(input) {
+    store.dispatch({
+      type: input
+    });
+
+  }
+
+
   render() {
     return (
       <div>
-        <button>-</button>
-        0
-        <button>+</button>
+        <button onClick={() => this.toggle('subtract') }>-</button>
+          {this.props.count}
+        <button onClick={() => this.toggle('add') }>+</button>
       </div>
     );
   }
@@ -19,7 +27,7 @@ class Counter extends React.Component {
 
 function display() {
   ReactDOM.render(
-    <Counter/>,
+    <Counter count={store.getState()}/>,
     document.getElementById('root')
   );
 }

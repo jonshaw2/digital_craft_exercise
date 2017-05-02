@@ -12,23 +12,46 @@
 */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Redux from 'redux';
+import reducer from './Dragon.reducer';
+
+let store = Redux.createStore(reducer);
 
 class DragonGame extends React.Component {
+  play(input) {
+
+    if (input === 'fight'){
+      let result = Math.floor(Math.random()*2);
+      console.log(result);
+      if (result === 0){
+        input = 'dragonWin'
+      }
+      else {
+        input = 'heroWin'
+      }
+    }
+
+
+    console.log(this.props.result);
+    store.dispatch({
+      type: input
+    });
+  }
   render() {
     let message;
     return (
       <div>
         <img src="http://img10.deviantart.net/e984/i/2015/287/c/5/red_dragon_by_sandara-d6hpycs.jpg" width="300"/>
         <br/>
-        <label>Dragon: 20</label>&nbsp;
-        <label>Hero: 10</label>
+        <label>Dragon: {this.props.result[0]}</label>&nbsp;
+        <label>Hero: {this.props.result[1]}</label>
         <br/>
-        {message}
+        {this.props.result[2]}
         <br/>
-        <button>
+        <button onClick={() => this.play('fight')}>
           Fight
         </button>
-        <button>
+        <button onClick={() => this.play('flight')}>
           Flight
         </button>
       </div>
@@ -36,4 +59,13 @@ class DragonGame extends React.Component {
   }
 }
 
-ReactDOM.render(<DragonGame/>, document.getElementById('root'));
+
+function display(){
+  ReactDOM.render(
+    <DragonGame result={store.getState()}/>,
+    document.getElementById('root'));
+
+}
+
+display();
+store.subscribe(display);
