@@ -8,9 +8,17 @@ let store = Redux.createStore(reducer);
 
 class HeadsTails extends React.Component {
   flip(){
-    store.dispatch({
-      type: 'flip'
-    });
+    let flipResult = Math.random();
+    if (flipResult > 0.5){
+      store.dispatch({
+        type: 'flipHead'
+      });
+    }
+    else{
+      store.dispatch({
+        type: 'flipTail'
+      })
+    }
   }
 
   render() {
@@ -18,9 +26,8 @@ class HeadsTails extends React.Component {
     let coinDisplay;
 
     if (value) {
-      let imageUrl = value > 0.5 ?
-        'images/quarter-front.png' :
-        'images/quarter-back.png';
+      let imageUrl = this.props.flipResult;
+
       coinDisplay = <img src={imageUrl}/>;
     }
     return (

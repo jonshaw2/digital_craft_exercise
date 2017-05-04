@@ -1,25 +1,34 @@
-function reducer(state = [20, 10, ''], action) {
+function reducer(state = {dragonHp: 20, heroHp: 10, message: ''}, action) {
+  let newArray = Object.assign({}, state);
+
   if (action.type === 'flight'){
-    console.log('in flight');
-    console.log(state);
-    let newArray = state.map((item, i) => i === 1 ? state[1]+5 : item
-    );
+    newArray.heroHp = newArray.heroHp + 2;
     return newArray;
   }
   else if (action.type ==='dragonWin'){
     console.log('in dragonwin');
-    let newArray = state.map((item, i) => i === 1 ? state[1]-5 : item);
-    if (newArray[1] <= 0){
-      newArray = newArray.map((item, i) => i === 2 ? 'Hero Died' : item);
+    newArray.heroHp = newArray.heroHp - 5;
+    if (newArray.heroHp <= 0){
+      newArray.message = 'Hero Died';
     }
     return newArray;
   }
   else if (action.type ==='heroWin'){
     console.log('in hero win');
-    let newArray = state.map((item, i) => i === 0 ? state[0]-5 : item);
-    if (newArray[0] <= 0){
-      newArray = newArray.map((item, i) => i === 2 ? 'Dragon Dead' : item);
+    newArray.dragonHp = newArray.dragonHp - 5
+    if (newArray.dragonHp <= 0){
+      newArray.message = 'Dragon Dead';
     }
+    return newArray;
+  }
+  else if (action.type ==='reset'){
+    console.log('in reset');
+    newArray = {
+      dragonHp: 20,
+      heroHp: 10,
+      message: ''
+    }
+
     return newArray;
   }
 

@@ -15,7 +15,7 @@ import ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import reducer from './Dragon.reducer';
 
-let store = Redux.createStore(reducer);
+let store = Redux.createStore(reducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class DragonGame extends React.Component {
   play(input) {
@@ -31,8 +31,6 @@ class DragonGame extends React.Component {
       }
     }
 
-
-    console.log(this.props.result);
     store.dispatch({
       type: input
     });
@@ -43,16 +41,21 @@ class DragonGame extends React.Component {
       <div>
         <img src="http://img10.deviantart.net/e984/i/2015/287/c/5/red_dragon_by_sandara-d6hpycs.jpg" width="300"/>
         <br/>
-        <label>Dragon: {this.props.result[0]}</label>&nbsp;
-        <label>Hero: {this.props.result[1]}</label>
+        <label>Dragon: {this.props.result.dragonHp}</label>&nbsp;
+        <label>Hero: {this.props.result.heroHp}</label>
         <br/>
-        {this.props.result[2]}
+        {this.props.result.message}
         <br/>
+
         <button onClick={() => this.play('fight')}>
           Fight
         </button>
         <button onClick={() => this.play('flight')}>
           Flight
+        </button>
+        <br/>
+        <button onClick={() => this.play('reset')}>
+          Reset
         </button>
       </div>
     );

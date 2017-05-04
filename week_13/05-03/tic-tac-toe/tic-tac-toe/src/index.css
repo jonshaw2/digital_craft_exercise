@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.canvas{
+  /*width: 100%;*/
+  width: 40%;
+  min-width: 500px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 30%;
+  margin-right: 30%;
+
+}
+button.board {
+  display: block;
+  float: left;
+  width: 33%;
+  height: 20vh;
+  background-color: white;
+  color: black;
+  font-size: 5em;
+  border-top: none;
+  border-left: none;
+
+}
+
+.score_board {
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+button.board:nth-child(3n+0) {
+  border-right: none;
+}
+button.board:nth-child(n+7){
+  border-bottom: none;
+}
+
+.canvas .resetButton{
+
+  text-align: center;
+
+}
+
+button.reset {
+
+
+  margin-top: 10%;
+
+}
+
+.reset{
+font-size: 2em;
+clear: left;
+}

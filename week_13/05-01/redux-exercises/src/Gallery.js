@@ -12,24 +12,43 @@ const IMAGES = [
   'images/monorail.jpg',
 ];
 
-let store = Redux.createStore(reducer);
+let store = Redux.createStore(reducer,
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class Gallery extends React.Component {
+  loadImage(index){
+    store.dispatch({
+      type: 'loadImage',
+      index: index
+    })
+  }
+
+  previous(){
+    store.dispatch({
+      type: 'previous'
+    });
+  }
+
+  next(){
+    store.dispatch({
+      type: 'next'
+    });
+  }
   render() {
-    let currentImage = this.props.images[0];
+    let currentImage = this.props.images[this.props.imageIndex];
     return (
       <div>
-        <button>
+        <button onClick={() => this.previous()}>
           Previous
         </button>
-        <button>
+        <button onClick={() => this.next()}>
           Next
         </button>
         <br/>
           <img src={currentImage} key={currentImage}/>
         <div>
           {this.props.images.map((imageUrl, idx) =>
-            <img key={idx} src={imageUrl} height="60"/>
+            <button onClick = {() => this.loadImage(idx)}><img key={idx} src={imageUrl} width="60" height="60"/></button>
           )}
         </div>
       </div>
@@ -39,7 +58,7 @@ class Gallery extends React.Component {
 
 function display() {
   ReactDOM.render(
-    <Gallery images={IMAGES}/>,
+    <Gallery imageIndex = {store.getState()} images={IMAGES}/>,
     document.getElementById('root')
   );
 }
