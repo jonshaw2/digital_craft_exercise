@@ -11,7 +11,8 @@ import DragonGameContainer from './dragon/Dragon';
 import dragonGameReducer from './dragon/Dragon.reducer';
 import WeatherContainer from './weather/Weather';
 import weatherReducer from './weather/Weather.reducer';
-import { Router, Route, hashHistory, Link, IndexRoute } from 'react-router';
+import { Router, Route, hashHistory, Link, IndexRoute, IndexLink } from 'react-router';
+import './index.css';
 
 const reducer = Redux.combineReducers({
   theCount: counterReducer,
@@ -25,15 +26,21 @@ const store = Redux.createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   Redux.applyMiddleware(ReduxThunk)
 );
+let homePage = ({children}) =>
+  <div>
+    Welcome Home!
+    hello
+  </div>
+
 
 const AppLayout = ({children}) =>
   <div>
     <ul className="nav">
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/counter">Counter</Link></li>
-      <li><Link to="/gallery">Gallery</Link></li>
-      <li><Link to="/dragon">Dragon</Link></li>
-      <li><Link to="/weather">Weather</Link></li>
+      <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+      <li><Link to="/counter" activeClassName="active">Counter</Link></li>
+      <li><Link to="/gallery" activeClassName="active">Gallery</Link></li>
+      <li><Link to="/dragon" activeClassName="active">Dragon</Link></li>
+      <li><Link to="/weather" activeClassName="active">Weather</Link></li>
     </ul>
     <div>
       {children}
@@ -58,7 +65,7 @@ ReactDOM.render(
   <ReactRedux.Provider store={store}>
   <Router history={hashHistory}>
     <Route path="/" component={AppLayout}>
-
+      <IndexRoute component={homePage}/>
       <Route path="/counter" component={CounterContainer}/>
       <Route path="/gallery" component={GalleryContainer}/>
       <Route path="/dragon" component={DragonGameContainer}/>
