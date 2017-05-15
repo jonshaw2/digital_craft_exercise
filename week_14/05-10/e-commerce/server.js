@@ -16,10 +16,25 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/api/products', (req, resp, next) => {
-  db.any('select * from product')
-    .then(account => resp.json(account))
-    .catch(next);
-});
+
+  var data = {}
+  db.any('SELECT DISTINCT category from product')
+    .then(function(categories){
+      data.category = categories;
+       db.any(`
+     select * from product`)
+   .then(function(products){
+     data.product = products;
+     resp.json(data)
+   })
+ }).catch(next);
+})
+
+// app.get('/api/products', (req, resp, next) => {
+//   db.any('select * from product')
+//     .then(account => resp.json(account))
+//     .catch(next);
+// });
 
 app.get('/api/products/:id', (req, resp, next) => {
   let product_id = req.params.id;
@@ -31,22 +46,23 @@ app.get('/api/products/:id', (req, resp, next) => {
 })
 
 app.post('/api/user/signup', (req, resp, next) =>{
-  let user_name = req.body.user_name;
+  let user_name = req.body.username;
   let name = req.body.name;
   let password = req.body.password;
+  let email = req.body.email;
   bcrypt.hash(password, 10)
     .then(function(encrypted){
       return db.one(`
-        insert into account values(default, $1, $2, $3)
+        insert into account values(default, $1, $2, $3, $4)
         returning *
-        `, [user_name, name, encrypted]);
+        `, [user_name, name, encrypted, email]);
     })
     .then(page => resp.json(page))
     .catch(next);
 })
 
 app.post('/api/user/login', (req, resp, next) => {
-  let user_name = req.body.user_name;
+  let user_name = req.body.username;
   let password = req.body.password;
   var matched
   db.one(`

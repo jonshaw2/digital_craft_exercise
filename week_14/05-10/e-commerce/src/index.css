@@ -3,3 +3,22 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+
+
+.product_image{
+
+text-align: center;
+
+}
+.imageAndName{
+  width: 200px;
+  padding: 20px;
+float: left;
+text-align: center;
+}
+.category{
+  padding-left: 50px;
+  width: 800px;
+  clear: left;
+}
