@@ -15,6 +15,7 @@ const bcrypt = require('bcrypt');
 app.use(bodyParser.json());
 app.use(cors());
 
+
 app.get('/api/products', (req, resp, next) => {
 
   var data = {}
@@ -93,14 +94,19 @@ app.post('/api/user/login', (req, resp, next) => {
 
 app.use(function authentication(req, resp, next){
   let token = req.body.token || req.query.token;
+  console.log('token:',token);
   if (token){
+
     db.oneOrNone(`
       Select * from auth_token where auth_token = $1`,[token])
     .then(function(user){
+
       if (user){
+        console.log('passed');
         next();
       }
       else{
+        console.log('blocked');
         resp.json('unauthorized');
       }
     })

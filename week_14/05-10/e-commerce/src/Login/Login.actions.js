@@ -18,6 +18,11 @@ export function changeUsername(username){
   return {type: 'usernameChange', username: username}
 }
 
+export function logout(){
+  console.log('hi');
+  return {type: 'logOut'}
+}
+
 export function submitLogin(username, password){
   console.log(username);
   console.log(password);

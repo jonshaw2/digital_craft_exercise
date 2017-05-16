@@ -2,7 +2,8 @@ const INITIAL_STATE = {
   username : '',
   password : '',
   currentUser : '',
-  currentToken : ''
+  currentToken : '',
+  id : ''
   // put properties you need here
 };
 
@@ -20,7 +21,18 @@ export default function reducer(state = INITIAL_STATE, action) {
   if (action.type === 'submitLogin'){
     return Object.assign({},state,{
       currentUser:action.data.username,
-      currentToken:action.data.token
+      currentToken:action.data.token,
+      id: action.data.id
+    })
+  }
+
+  if (action.type === 'logOut'){
+    return Object.assign({},state,{
+      currentUser: '',
+      currentToken: '',
+      username: '',
+      password: '',
+      id: ''
     })
   }
   // add if statements to catch specific actions

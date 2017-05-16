@@ -24,7 +24,7 @@ componentDidMount() {
       productPrice = product.price;
 
     }
-
+    console.log('userID info:',this.props.loginUser);
     return(
       <div>
       <h1>
@@ -36,7 +36,7 @@ componentDidMount() {
       <img src={productURL} alt={productURL} width="300" height="300"/><br/>
       Price: {productPrice}<br/>
       Description: {productDesc}<br/>
-
+      <button onClick={()=> this.props.buyItRightMeow(this.props.params.id, this.props.loginUser.currentToken, this.props.loginUser.id)}>BUY NOW</button>
       </div>
     );
   }
@@ -44,7 +44,8 @@ componentDidMount() {
 
 const ProductContainer = ReactRedux.connect(
   state=>({
-    product: state.product.productInfo
+    product: state.product.productInfo,
+    loginUser: state.loginUser
   }),
   actions
 )(Gallery);
